@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "mainpage.html" %}
 
 {% block content %}
         {% if messages %}
@@ -35,7 +35,7 @@
             </div>
             <button type="submit" class="btn btn-primary register-button">Register</button>
         </form>
-        <p>If you have registered before, <a href="/login"><strong>log in.</strong></a></p>
+        <p>If you have registered before, <a href="/accounts/login"><strong>log in.</strong></a></p>
     </div>
 
 {% endblock %}

@@ -1,13 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 # Create your views here.
 
-def index(request):
-    return HttpResponse('User App')
 
 @csrf_protect
 def register(request):
@@ -20,18 +17,18 @@ def register(request):
         # tikriname, ar sutampa slaptažodžiai
         error = False
         if not password or password != password2:
-            messages.error(request, _('Slaptažodis netinkamas arba neįvestas'))
+            messages.error(request, ('The password is invalid or not entered'))
             error = True
-        if not username or User.objects.filter(username=username).exsisting():
-            messages.error(request, _('Klientas su tokiu prisijungimo {} varduo jau egzistuoja').format(username))
+        if not username or User.objects.filter(username=username).exists():
+            messages.error(request, ('A client with this login name {} already exists').format(username))
             error = True            
         if not email or User.objects.filter(email=email).exists():
-            messages.error(request, _('Klientas su tokiu el.paštu {}  jau egzistuoja').format(email))
+            messages.error(request, ('A customer with this email {} already exists').format(email))
             error=True
         if error:
             return redirect('register')
         else:
             User.objects.create_user(username=username, email=email, password=password)
-            messages.success(request, _('Klientas {} buvo sėkmingai priregistruotas').format(email))
-            return redirect('index')
+            messages.success(request, ('Customer {} was successfully registered').format(email))
+            return redirect('register')
     return render(request, 'register.html')

@@ -22,7 +22,7 @@
       <!-- fevicon -->
       <link rel="icon" href="{% static 'images/fevicon.png'%}" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css'%}">
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css'%}">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href= "https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -31,10 +31,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
+   {% block content %}
    <body class="main-layout">
+      
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="{% static 'images/loading.gif'%}" alt="#" /></div>
       </div>
       <!-- end loader -->
       <!-- header -->
@@ -60,9 +62,6 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" href="index.html">Home</a>
-                              </li>
-                              <li class="nav-item">
                                  <a class="nav-link" href="about.html">About</a>
                               </li>
                               <li class="nav-item">
@@ -80,8 +79,9 @@
                               <li class="nav-item d_none">
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
+                              <li class="nav-item"><a class="nav-link" href="{% url 'register'%}">Register</a></li>
                               <li class="nav-item d_none">
-                                 <a class="nav-link" href="#">Login</a>
+                                 <a class="nav-link" href="{% url 'login'%}">Login</a>
                               </li>
                            </ul>
                         </div>
@@ -508,6 +508,7 @@
             </div>
          </div>
       </footer>
+      {% endblock %}
       <!-- end footer -->
       <!-- Javascript files-->
       <script src="{% static '' %}js/jquery.min.js"></script>
