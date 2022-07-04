@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'product.apps.ProductConfig',
     'user.apps.UserConfig',
     'e_shop',
     'django.contrib.admin',
