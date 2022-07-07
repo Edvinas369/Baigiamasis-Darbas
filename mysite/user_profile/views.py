@@ -1,12 +1,17 @@
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_protect
-from django.contrib import messages
-from django.shortcuts import redirect
-from django.contrib.auth.forms import User
-from user.models import UserProfile
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import User
+from user_profile.models import Profile
+from django.views.decorators.csrf import csrf_protect
+from . forms import UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
+def profile(request):
+    return render(request, 'user_profile/profile.html')
 
 @csrf_protect
 def register(request):
@@ -32,7 +37,7 @@ def register(request):
         else:
             User.objects.create_user(username=username, email=email, password=password)
             current_user = request.user
-            data = UserProfile()
+            data = Profile()
             data.user_id = current_user.id
             data.image = "images/users/user.png"
             data.save()
@@ -41,8 +46,17 @@ def register(request):
     return render(request, 'register.html')
 
 
-
 @login_required
-def profile(request):
-    return render(request, 'profile.html')
-
+def update_profile(request):
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, "user profile was updated successfully")
+            return redirect(reverse_lazy('profile'))
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    return render(request, 'user_profile/profile_update.html', {'u_form': u_form, 'p_form': p_form})

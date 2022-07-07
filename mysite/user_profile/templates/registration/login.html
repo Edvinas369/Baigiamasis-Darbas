@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container">
+    <h1>{% trans 'login'|capfirst %}</h1>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-danger">{% trans 'Login error: try again!' %}</div>
+        {% endif %}
+        {% if next and request.user.is_authenticated %}
+            <div class="alert alert-warning">{% trans 'You do not have permission to access that area. Please login.' %}</div>
+        {% endif %}
+        <div class="form-group">
+            <label for="id_username">{% trans 'username'|capfirst %}:</label><br>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="id_password">{% trans 'password'|capfirst %}:</label><br>
+            {{ form.password }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">{% trans 'login'|capfirst %}</button>
+            <input type="hidden" name="next" value="{{ next }}">
+        </div>
+    </form>
+    <p><a href="{% url 'password_reset' %}">{% trans 'forgot password'|capfirst %}?</a></p>
+</div>
+{% endblock content %}
