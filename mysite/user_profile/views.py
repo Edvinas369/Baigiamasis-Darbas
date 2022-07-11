@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import User
-from user_profile.models import Profile
+from . models import Profile
 from django.views.decorators.csrf import csrf_protect
 from . forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
@@ -11,17 +11,15 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def profile(request):
-    return render(request, 'user_profile/profile.html')
+    return render(request, 'profiles/profile.html')
 
 @csrf_protect
 def register(request):
     if request.method == "POST":
-        # pasiimame reikšmes iš registracijos formos
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
-        # tikriname, ar sutampa slaptažodžiai
         error = False
         if not password or password != password2:
             messages.error(request, ('The password is invalid or not entered'))
@@ -36,13 +34,8 @@ def register(request):
             return redirect('register')
         else:
             User.objects.create_user(username=username, email=email, password=password)
-            current_user = request.user
-            data = Profile()
-            data.user_id = current_user.id
-            data.image = "images/users/user.png"
-            data.save()
             messages.success(request, ('Customer {} was successfully registered').format(email))
-            return redirect('e_shop')
+            return redirect('index')
     return render(request, 'register.html')
 
 
@@ -59,4 +52,4 @@ def update_profile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-    return render(request, 'user_profile/profile_update.html', {'u_form': u_form, 'p_form': p_form})
+    return render(request, 'profiles/profile_update.html', {'u_form': u_form, 'p_form': p_form})

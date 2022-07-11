@@ -8,5 +8,8 @@ def index(request):
 def checkout(request):
     return render(request, 'checkout.html')
 
-def login(request):
-    return render(request, 'login.html')
+def cart(request):
+    return render(request, 'cart.html')
+
+def refund(request):
+    return render(request, 'refund.html')
