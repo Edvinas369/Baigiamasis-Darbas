@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'user_profile',
     'crispy_forms',
     'tinymce',
+    'product',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
@@ -131,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+MEDIA_URL = 'media/' 
 STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 
