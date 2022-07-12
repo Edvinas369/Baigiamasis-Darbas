@@ -179,7 +179,7 @@
 												<span>Total</span>
 												<span class="total-amount">$134.00</span>
 											</div>
-											<a href="checkout" class="btn animate">Checkout</a>
+											<a href="{% url 'checkout'%}" class="btn animate">Checkout</a>
 										</div>
 									</div>
 									<!--/ End Shopping Item -->
@@ -207,7 +207,7 @@
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout">Checkout</a></li>
+															<li><a href="{% url 'checkout'%}">Checkout</a></li>
 														</ul>
 													</li>
 													<li><a href="contact.html">Contact Us</a></li>

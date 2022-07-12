@@ -49,7 +49,7 @@
 	<link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
-{% block content %}		
+
 	
 </head>
 <body class="js">
@@ -156,7 +156,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span> Items</span>
-										<a href="{% url 'cart'%}">View Cart</a>
+										<a href="">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 										<li>
@@ -177,7 +177,7 @@
 											<span>Total</span>
 											<span class="total-amount">$134.00</span>
 										</div>
-										<a href="checkout" class="btn animate">Checkout</a>
+										<a href="{% url 'checkout'%}" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->
@@ -193,7 +193,7 @@
 				<div class="cat-nav-head">
 					<div class="row">
 						<div class="col-lg-3">
-							<div class="all-category">
+							{% comment %} <div class="all-category">
 								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
 								<ul class="main-category">
 									<li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -258,7 +258,7 @@
 									<li><a href="#">westrn dress</a></li>
 									<li><a href="#">denim </a></li>
 								</ul>
-							</div>
+							</div> {% endcomment %}
 						</div>
 						<div class="col-lg-9 col-12">
 							<div class="menu-area">
@@ -272,11 +272,12 @@
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
-															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout">Checkout</a></li>
+															<li><a href="{% url 'cart'%}">Cart</a></li>
+															<li><a href="{% url 'checkout'%}">Checkout</a></li>
 														</ul>
 													</li>
-													<li><a href="contact.html">Contact Us</a></li>
+													<li><a href="">Contact Us</a></li>
+													<li><a href="">About Us</a></li>
 												</ul>
 										</div>
 									</div>
@@ -291,7 +292,7 @@
 		<!--/ End Header Inner -->
 	</header>
 	<!--/ End Header -->
-	
+	{% block content %}		
 	<!-- Slider Area -->
 	<section class="hero-slider">
 		<!-- Single Slider -->
@@ -1718,7 +1719,7 @@
             </div>
     </div>
 	<!-- End Product Area -->
-	
+
 	<!-- Start Midium Banner  -->
 	<section class="midium-banner">
 		<div class="container">
@@ -2146,7 +2147,7 @@
 		</div>
 	</section>
 	<!-- End Shop Blog  -->
-	
+	{% endblock %}
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
 		<div class="container">
@@ -2365,4 +2366,3 @@
 	<script src="{% static 'js/active.js' %}"></script>
 </body>
 </html>
-{% endblock %}
