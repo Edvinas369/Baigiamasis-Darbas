@@ -83,12 +83,14 @@
 						<div class="col-lg-7 col-md-12 col-12">
 							<!-- Top Right -->
 							<div class="right-content">
-								<ul class="list-main">
-									<li><i class="ti-location-pin"></i> Store location</li>
-									<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-									<li><i class="ti-user"></i> <a href="#">My account</a></li>
-									<li><i class="ti-power-off"></i><a href="register">Register</a></li>
-									<li><i class="ti-power-off"></i><a href="login">Login</a></li>
+								{% if user.is_authenticated %}
+								{{ user.get_username }}</a></li>
+								<li><i class="ti-user"></i> <a href="{% url 'profile'%}">My account</a></li>
+								<li><i class="ti-power-off"></i><a href="{% url 'logout'%}?next=/e_shop">Logout</a></li>
+								{% else %}
+								<li><i class="ti-power-off"></i><a href="{% url 'register'%}">Register</a></li>
+								<li><i class="ti-power-off"></i><a href="{% url 'login'%}?next={{request.path}}"">Login</a></li>
+								{% endif %}
 								</ul>
 							</div>
 							<!-- End Top Right -->
@@ -144,15 +146,15 @@
 									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 								</div>
 								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+									<a href="{% url 'profile'%}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 								</div>
 								<div class="sinlge-bar shopping">
-									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+									<a href="{% url 'cart'%}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 									<!-- Shopping Item -->
 									<div class="shopping-item">
 										<div class="dropdown-cart-header">
 											<span>2 Items</span>
-											<a href="#">View Cart</a>
+											<a href="{% url 'cart'%}">View Cart</a>
 										</div>
 										<ul class="shopping-list">
 											<li>
@@ -173,7 +175,7 @@
 												<span>Total</span>
 												<span class="total-amount">$134.00</span>
 											</div>
-											<a href="checkout" class="btn animate">Checkout</a>
+											<a href="{% url 'checkout'%}" class="btn animate">Checkout</a>
 										</div>
 									</div>
 									<!--/ End Shopping Item -->
@@ -195,13 +197,13 @@
 										<div class="navbar-collapse">	
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
+													<li class="active"><a href="{% url 'index'%}">Home</a></li>
 													<li><a href="#">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
-															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout">Checkout</a></li>
+															<li><a href="{% url 'cart'%}">Cart</a></li>
+															<li><a href="{% url 'checkout'%}">Checkout</a></li>
 														</ul>
 													</li>
 													<li><a href="contact.html">Contact Us</a></li>
@@ -228,7 +230,7 @@
 						<div class="bread-inner">
 							<ul class="bread-list">
 								<li><a href="index.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="blog-single.html">Checkout</a></li>
+								<li class="active"><a href="{% url 'checkout'%}">Checkout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -539,8 +541,8 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Address Line 2<span>*</span></label>
-											<input type="text" name="address" placeholder="" required="required">
+											<label>Address Line 2<span></span></label>
+											<input type="text" name="address" placeholder="" required="false">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
@@ -551,8 +553,8 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Company<span>*</span></label>
-											<input type="text" name="company" placeholder="" required="required">
+											<label>Company<span></span></label>
+											<input type="text" name="company" placeholder="" required="false">
 										</div>
 									</div>
 									<div class="col-12">
@@ -585,9 +587,9 @@
 								<h2>Payments</h2>
 								<div class="content">
 									<div class="checkbox">
-										<label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
-										<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
+										<label class="checkbox-inline" value="1" ><input name="updates" id="1" type="checkbox" > Check Payments</label>
+										<label class="checkbox-inline" value="1" ><input name="news" id="1" type="checkbox" > Cash On Delivery</label>
+										<label class="checkbox-inline" value="1" ><input name="news" id="1" type="checkbox" > PayPal</label>
 									</div>
 								</div>
 							</div>
@@ -603,7 +605,7 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="#" class="btn">proceed to checkout</a>
+										<a href="{% url 'checkout'%}" class="btn">proceed to checkout</a>
 									</div>
 								</div>
 							</div>
@@ -720,8 +722,7 @@
 								<h4>Customer Service</h4>
 								<ul>
 									<li><a href="#">Payment Methods</a></li>
-									<li><a href="#">Money-back</a></li>
-									<li><a href="#">Returns</a></li>
+									<li><a href="#">Refund</a></li>
 									<li><a href="#">Shipping</a></li>
 									<li><a href="#">Privacy Policy</a></li>
 								</ul>

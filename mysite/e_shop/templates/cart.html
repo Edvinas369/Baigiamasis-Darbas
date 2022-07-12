@@ -86,11 +86,14 @@
 							<!-- Top Right -->
 							<div class="right-content">
 								<ul class="list-main">
-									<li><i class="ti-location-pin"></i> Store location</li>
-									<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-									<li><i class="ti-user"></i> <a href="#">My account</a></li>
-									<li><i class="ti-power-off"></i><a href="register">Register</a></li>
-									<li><i class="ti-power-off"></i><a href="login">Login</a></li>
+									{% if user.is_authenticated %}
+									{{ user.get_username }}</a></li>
+									<li><i class="ti-user"></i> <a href="{% url 'profile'%}">My account</a></li>
+									<li><i class="ti-power-off"></i><a href="{% url 'logout'%}?next=/e_shop">Logout</a></li>
+									{% else %}
+									<li><i class="ti-power-off"></i><a href="{% url 'register'%}">Register</a></li>
+									<li><i class="ti-power-off"></i><a href="{% url 'login'%}?next={{request.path}}"">Login</a></li>
+									{% endif %}
 								</ul>
 							</div>
 							<!-- End Top Right -->
@@ -146,15 +149,15 @@
 									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 								</div>
 								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+									<a href="{% url 'profile'%}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 								</div>
 								<div class="sinlge-bar shopping">
-									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+									<a href="{% url 'cart'%}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 									<!-- Shopping Item -->
 									<div class="shopping-item">
 										<div class="dropdown-cart-header">
 											<span> Items</span>
-											<a href="#">View Cart</a>
+											<a href="{% url 'cart'%}">View Cart</a>
 										</div>
 										<ul class="shopping-list">
 											<li>
@@ -175,7 +178,7 @@
 												<span>Total</span>
 												<span class="total-amount">$134.00</span>
 											</div>
-											<a href="checkout" class="btn animate">Checkout</a>
+											<a href="{% url 'checkout'%}" class="btn animate">Checkout</a>
 										</div>
 									</div>
 									<!--/ End Shopping Item -->
@@ -197,13 +200,13 @@
 										<div class="navbar-collapse">	
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
+													<li class="active"><a href="{% url 'index'%}">Home</a></li>
 													<li><a href="#">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout">Checkout</a></li>
+															<li><a href="{% url 'checkout'%}">Checkout</a></li>
 														</ul>
 													</li>
 													<li><a href="contact.html">Contact Us</a></li>
@@ -367,7 +370,7 @@
 										<li class="last">You Pay<span>$310.00</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
+										<a href="{% url 'checkout'%}" class="btn">Checkout</a>
 										<a href="#" class="btn">Continue shopping</a>
 									</div>
 								</div>
@@ -601,8 +604,7 @@
 							<h4>Customer Service</h4>
 							<ul>
 								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
+								<li><a href="#">Refund</a></li>
 								<li><a href="#">Shipping</a></li>
 								<li><a href="#">Privacy Policy</a></li>
 							</ul>

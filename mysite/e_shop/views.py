@@ -13,3 +13,8 @@ def login(request):
 
 def about(request):
     return render(request, 'about.html')
+def cart(request):
+    return render(request, 'cart.html')
+
+def refund(request):
+    return render(request, 'refund.html')
