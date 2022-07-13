@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tinymce',
     'product',
+    'order',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',

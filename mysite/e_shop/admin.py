@@ -3,8 +3,8 @@ from e_shop.models import Setting
 
 # Register your models here.
 
-class SettingtAdmin(admin.ModelAdmin):
+class SettingAdmin(admin.ModelAdmin):
     list_display = ['title','company', 'update_at','status']
     
 
-admin.site.register(Setting,SettingtAdmin)
+admin.site.register(Setting,SettingAdmin)

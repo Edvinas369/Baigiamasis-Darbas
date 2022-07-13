@@ -18,19 +18,26 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+admin.autodiscover()
+admin.site.enable_nav_sidebar = False
 
 from e_shop import views
 
 urlpatterns = [
     path('e_shop/', include('e_shop.urls')),
+    path('product/', include('product.urls')),
+    path('order/', include('order.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
+
     path('about/', views.about, name='about'),
     path('user_profile/', include('user_profile.urls')),
-    path('product/', include('product.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('i18n/', include('django.conf.urls.i18n')),
-    path('tinymce/', include('tinymce.urls')),
-    path('admin/', admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
