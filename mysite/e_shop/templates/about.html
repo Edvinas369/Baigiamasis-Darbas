@@ -1,21 +1,21 @@
-{% extends 'index.html' %}
+{% extends 'homebase.html' %}
 {% load i18n %}
 {% block title %} About Us- {{ setting.title }} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
 
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
 
-{% block content %}
+{% block body %}
 
 	<!-- BREADCRUMB -->
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-                <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+                <li><a href="{% url 'e_shop' %}">{% trans "Home" %}</a></li>
                 <li class="active">{% trans "About Us" %}</li>
 			</ul>
 		</div>
-
-        sfsfssfsfsdfsfsfsfsfsdfsdf
 	</div>
 	<!-- /BREADCRUMB -->
 
@@ -32,4 +32,5 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
-    {% endblock content %}
+
+{% endblock %}

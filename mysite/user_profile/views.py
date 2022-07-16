@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 def profile(request):
     return render(request, 'profiles/profile.html')
 
+
 @csrf_protect
 def register(request):
     if request.method == "POST":
@@ -25,16 +26,20 @@ def register(request):
             messages.error(request, ('The password is invalid or not entered'))
             error = True
         if not username or User.objects.filter(username=username).exists():
-            messages.error(request, ('A client with this login name {} already exists').format(username))
-            error = True            
+            messages.error(
+                request, ('A client with this login name {} already exists').format(username))
+            error = True
         if not email or User.objects.filter(email=email).exists():
-            messages.error(request, ('A customer with this email {} already exists').format(email))
-            error=True
+            messages.error(
+                request, ('A customer with this email {} already exists').format(email))
+            error = True
         if error:
             return redirect('register')
         else:
-            User.objects.create_user(username=username, email=email, password=password)
-            messages.success(request, ('Customer {} was successfully registered').format(email))
+            User.objects.create_user(
+                username=username, email=email, password=password)
+            messages.success(
+                request, ('Customer {} was successfully registered').format(email))
             return redirect('index')
     return render(request, 'register.html')
 
@@ -43,7 +48,8 @@ def register(request):
 def update_profile(request):
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileUpdateForm(
+            request.POST, request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()

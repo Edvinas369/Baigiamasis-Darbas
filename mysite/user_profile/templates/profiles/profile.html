@@ -1,6 +1,9 @@
-{% extends 'index.html' %}
+{% extends 'homebase.html' %}
 {% load static i18n %}
-{% block content %}
+{% block body %}
+{% include 'sidebar.html' %} 
+
+
 <div class="container">
     <img class="rounded-circle account-img img-fluid" src="{{ user.profile.picture.url }}">
     <div>
@@ -14,4 +17,4 @@
         {% endif %}
     </div>
 </div>
-{% endblock content %}
+{% endblock %}

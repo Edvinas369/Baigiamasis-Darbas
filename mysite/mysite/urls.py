@@ -22,8 +22,10 @@ admin.autodiscover()
 admin.site.enable_nav_sidebar = False
 
 from e_shop import views
+from order import views as OrderViews
 
 urlpatterns = [
+    path('', views.index, name='e_shop'),
     path('e_shop/', include('e_shop.urls')),
     path('product/', include('product.urls')),
     path('order/', include('order.urls')),
@@ -33,8 +35,8 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 
     path('about/', views.about, name='about'),
+    path('shopcart/', OrderViews.shopcart, name='shopcart'),
     path('user_profile/', include('user_profile.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
 
 
 

@@ -1,6 +1,6 @@
-{% extends "index.html" %}
+{% extends "homebase.html" %}
 
-{% block content %}
+{% block body %}
         {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-danger" role="alert">
@@ -38,4 +38,4 @@
         <p>If you have registered before, <a href="/accounts/login"><strong>log in.</strong></a></p>
     </div>
 
-{% endblock %}
+    {% endblock %}

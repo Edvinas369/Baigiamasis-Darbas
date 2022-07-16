@@ -6,8 +6,8 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(
-        get_user_model(), 
-        verbose_name=_("user"), 
+        get_user_model(),
+        verbose_name=_("user"),
         on_delete=models.CASCADE,
         related_name="profile",
     )
@@ -31,4 +31,3 @@ class Profile(models.Model):
     class Meta:
         verbose_name = _("user profile")
         verbose_name_plural = _("user profiles")
-

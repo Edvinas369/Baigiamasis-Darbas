@@ -1,6 +1,6 @@
-{% extends 'index.html' %}
+{% extends 'homebase.html' %}
 {% load i18n %}
-{% block content %}
+{% block body %}
 <div class="container">
     <h1>{% trans 'login'|capfirst %}</h1>
     <form method="post" action="{% url 'login' %}">
@@ -26,4 +26,4 @@
     </form>
     <p><a href="{% url 'password_reset' %}">{% trans 'forgot password'|capfirst %}?</a></p>
 </div>
-{% endblock content %}
+{% endblock %}

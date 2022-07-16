@@ -1,5 +1,6 @@
-from django.db.models.signals import post_save # signal
-from django.contrib.auth import get_user_model # sender of signal | blogai butu ... models import User
+from django.db.models.signals import post_save  # signal
+# sender of signal | blogai butu ... models import User
+from django.contrib.auth import get_user_model
 from django.dispatch import receiver           # receiver decorator
 from rest_framework.authtoken.models import Token
 from . models import Profile
