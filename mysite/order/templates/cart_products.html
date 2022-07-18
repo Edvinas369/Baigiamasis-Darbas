@@ -42,27 +42,27 @@
                             </thead>
                             <tbody>
 
-                            {% for rs in shopcart %}
+                            {% for product in shopcart %}
                                 <tr>
                                     <td class="thumb">
-                                        {% if rs.variant.image_id  > 0 %}
-                                            <img src="{{rs.variant.image }}" alt="">
+                                        {% if product.variant.image_id  > 0 %}
+                                            <img src="{{product.variant.image }}" alt="">
                                         {% else %}
-                                            <img src="{{rs.product.image.url}}" alt="">
+                                            <img src="{{product.product.image.url}}" alt="">
                                         {% endif %}
 
                                     </td>
                                     <td class="details">
-                                        <a href="/product/{{ rs.product.id }}/{{ rs.product.slug }}">{{rs.product}} {{ rs.variant.size }} {{ rs.variant.color }}</a>  </td>
+                                        <a href="/product/{{ product.product.id }}/{{ product.product.slug }}">{{product.product}} {{ product.variant.size }} {{ product.variant.color }}</a>  </td>
                                     <td class="price text-center"><strong>
-                                        {% if rs.product.variant == 'None' %}
+                                        {% if product.product.variant == 'None' %}
                                         {% else %}
                                         {% endif %}
                                     </strong></td>
-                                    <td class="qty text-center"><strong>{{rs.quantity}}</strong></td>
+                                    <td class="qty text-center"><strong>{{product.quantity}}</strong></td>
                                     <td class="total text-center"><strong class="primary-color">$
                                     </strong></td>
-                                    <td class="text-right"><a href="/order/deletefromcart/{{ rs.id }}" onclick="return confirm('Delete ! Are you sure?')" class="main-btn icon-btn"><i class="fa fa-close"></i></a></td>
+                                    <td class="text-right"><a href="/order/deletefromcart/{{ product.id }}" onclick="return confirm('Delete ! Are you sure?')" class="main-btn icon-btn"><i class="fa fa-close"></i></a></td>
                                 </tr>
 
                             {% endfor %}

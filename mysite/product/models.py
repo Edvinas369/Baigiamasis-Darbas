@@ -14,7 +14,7 @@ class Category (models.Model):
     title = models.CharField(max_length=50)
     keywords = models.CharField(max_length=255)
     description = models.TextField(max_length=255)
-    image=models.ImageField(blank=True,upload_to='images/')
+    image=models.ImageField(blank=True,upload_to='image/')
     status=models.CharField(max_length=10, choices=STATUS)
     slug = models.SlugField(null=False, unique=True)
     create_at=models.DateTimeField(auto_now_add=True)
@@ -37,7 +37,7 @@ class Product(models.Model):
     title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    image=models.ImageField(blank=True,upload_to='images/')
+    image=models.ImageField(blank=True,upload_to='image/')
     price = models.FloatField()
     amount=models.IntegerField()
     minamount=models.IntegerField()
@@ -60,7 +60,7 @@ class Product(models.Model):
 class Images(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
     title = models.CharField(max_length=50,blank=True)
-    image = models.ImageField(blank=True, upload_to='images/')
+    image = models.ImageField(blank=True, upload_to='image/')
 
     def __str__(self):
         return self.title

@@ -19,7 +19,7 @@ class Setting(models.Model):
     smtpemail = models.CharField(blank=True,max_length=50)
     smtppassword = models.CharField(blank=True,max_length=10)
     smtpport = models.CharField(blank=True,max_length=5)
-    icon = models.ImageField(blank=True,upload_to='images/')
+    icon = models.ImageField(blank=True,upload_to='image/')
     aboutus = RichTextUploadingField(blank=True)
     contact = RichTextUploadingField(blank=True)
     status=models.CharField(max_length=10,choices=STATUS)
