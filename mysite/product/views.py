@@ -3,6 +3,6 @@ from django.shortcuts import render
 
 # Create your views here.
 
+
 def index(request):
-    return HttpResponse("My Product Page")
-     
+    return render(request, 'index.html')

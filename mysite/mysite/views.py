@@ -2,7 +2,6 @@ from django.shortcuts import render
 from e_shop.models import Setting
 
 
-
 def index(request):
     return render(request, 'index.html')
 

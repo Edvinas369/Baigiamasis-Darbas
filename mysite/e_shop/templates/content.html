@@ -13,38 +13,38 @@
         </div>
       </div>
       <!-- section title -->
-      {% for rs in products_latest %}
+      {% for product in products_latest %}
       <!-- Product Single -->
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
             <a
-              href="{% url 'product_detail' rs.id rs.slug %}"
+              href="{% url 'product_details' product.id product.slug %}"
               class="main-btn quick-view"
               ><i class="fa fa-search-plus"></i> Quick view</a
             >
-            <img src="{{ rs.image.url }}" alt="" style="height: 200px" />
+            <img src="{{ product.image.url }}" alt="" style="height: 200px" />
           </div>
           <div class="product-body">
             <div class="product-rating">
               <i
-                class="fa fa-star{% if rs.avaregereview < 1%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 2%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 3%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 4%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 5%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"
               ></i>
-              {{ rs.avaregereview}}/{{ rs.countreview}}
+              {{ product.avaregereview}}/{{ product.countreview}}
             </div>
-            <h2 class="product-name"><a href="#">{{ rs.title }}</a></h2>
+            <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
             <div class="product-btns">
               <button class="main-btn icon-btn">
                 <i class="fa fa-heart"></i>
@@ -52,15 +52,15 @@
               <button class="main-btn icon-btn">
                 <i class="fa fa-exchange"></i>
               </button>
-              {% if rs.variant == 'None'%}
+              {% if product.variant == 'None'%}
               <a
-                href="/order/addtoshopcart/{{ rs.id }}"
+                href="/order/addtoshopcart/{{ product.id }}"
                 class="primary-btn add-to-cart"
                 ><i class="fa fa-shopping-cart"></i> Add to Cart</a
               >
               {% else %}
               <a
-                href="{% url 'product_detail' rs.id rs.slug %}"
+                href="{% url 'product_detail' product.id product.slug %}"
                 class="primary-btn add-to-cart"
                 ><i class="fa fa-shopping-cart"></i> Detail</a
               >
@@ -85,38 +85,38 @@
       <!-- section title -->
 
       <!-- section title -->
-      {% for rs in products_picked %}
+      {% for product in products_picked %}
       <!-- Product Single -->
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
             <a
-              href="{% url 'product_detail' rs.id rs.slug %}"
+              href="{% url 'product_detail' product.id product.slug %}"
               class="main-btn quick-view"
               ><i class="fa fa-search-plus"></i> Quick view</a
             >
-            <img src="{{ rs.image.url }}" alt="" style="height: 200px" />
+            <img src="{{ product.image.url }}" alt="" style="height: 200px" />
           </div>
           <div class="product-body">
             <div class="product-rating">
               <i
-                class="fa fa-star{% if rs.avaregereview < 1%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 2%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 3%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 4%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if rs.avaregereview < 5%}-o empty{% endif%}"
+                class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"
               ></i>
-              {{ rs.avaregereview}}/{{ rs.countreview}}
+              {{ product.avaregereview}}/{{ product.countreview}}
             </div>
-            <h2 class="product-name"><a href="#">{{ rs.title }}</a></h2>
+            <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
             <div class="product-btns">
               <button class="main-btn icon-btn">
                 <i class="fa fa-heart"></i>
@@ -124,15 +124,15 @@
               <button class="main-btn icon-btn">
                 <i class="fa fa-exchange"></i>
               </button>
-              {% if rs.variant == 'None'%}
+              {% if product.variant == 'None'%}
               <a
-                href="{% url 'addtoshopcart' rs.id %}"
+                href="{% url 'addtoshopcart' product.id %}"
                 class="primary-btn add-to-cart"
                 ><i class="fa fa-shopping-cart"></i> Add to Cart</a
               >
               {% else %}
               <a
-                href="{% url 'product_detail' rs.id rs.slug %}"
+                href="{% url 'product_detail' product.id product.slug %}"
                 class="primary-btn add-to-cart"
                 ><i class="fa fa-shopping-cart"></i> Detail</a
               >

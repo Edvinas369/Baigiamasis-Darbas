@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = [
-    (LANGUAGE_CODE, 'English'), 
+    (LANGUAGE_CODE, 'English'),
     ('lt', 'Lietuvių'),
 ]
 
@@ -129,12 +129,11 @@ USE_I18N = True
 USE_TZ = True
 
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'media/' 
+MEDIA_URL = 'media/'
 STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 
@@ -162,11 +161,11 @@ REST_FRAMEWORK = {
 }
 
 # CKEDITOR settings
-#...
+# ...
 SITE_ID = 1
 
 ####################################
-    ##  CKEDITOR CONFIGURATION ##
+##  CKEDITOR CONFIGURATION ##
 ####################################
 
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
@@ -181,5 +180,3 @@ CKEDITOR_CONFIGS = {
 }
 
 ###################################
-    
-
