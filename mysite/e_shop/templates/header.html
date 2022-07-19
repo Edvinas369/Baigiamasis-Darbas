@@ -5,9 +5,14 @@
     <div id="top-header">
         <div class="container">
           <div class="pull-left">
-            <span>{% trans "Welcome to EDVIGNA BALTIC!" %}</span> {% if messages %} {% for message in messages %} <div class="alert alert-{{message.tags}}" role="alert">
-              {{ message |safe }}
-            </div> {% endfor %} {% endif %}
+            <span>{% trans "Welcome to EDVIGNA BALTIC!" %}</span> 
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}" role="alert">
+                         {{ message }}
+                      </div>
+                  {% endfor %}
+              {% endif %}
           </div
         </div>
       </div>
@@ -24,8 +29,8 @@
             </div>
             <!-- /Logo -->
             <script>
-              $(function() {
-                $("#query").autocomplete({
+              €(function() {
+                €("#query").autocomplete({
                   source: "/search_auto/",
                   select: function(event, ui) { //item selected
                     AutoCompleteSelectHandler(event, ui)
