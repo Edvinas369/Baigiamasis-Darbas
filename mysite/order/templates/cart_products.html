@@ -44,33 +44,12 @@
 
                             {% for product in shopcart %}
                                 <tr>
-<<<<<<< HEAD
                                     <td class="thumb"><img src='{{product.product.image.url}}' alt=''></td>
                                     <td class= 'details'><a href='/product/{{product.product.id}}/{{product.product.slug}}'>{{producct.product}}</a>
                                     </td>
                                     <td class='price test-center'><strong>€{{product.product.price}}</strong></td.
                                     <td class='qty text-center'><strong>{{product.quantity}}</strong></td>
                                     <td class='total text-center'><strong class='primary-color'>€{{product.amount}}</strong></td>
-=======
-                                    <td class="thumb">
-                                        {% if product.variant.image_id  > 0 %}
-                                            <img src="{{product.variant.image }}" alt="">
-                                        {% else %}
-                                            <img src="{{product.product.image.url}}" alt="">
-                                        {% endif %}
-
-                                    </td>
-                                    <td class="details">
-                                        <a href="/product/{{ product.product.id }}/{{ product.product.slug }}">{{product.product}} {{ product.variant.size }} {{ product.variant.color }}</a>  </td>
-                                    <td class="price text-center"><strong>
-                                        {% if product.product.variant == 'None' %}
-                                        {% else %}
-                                        {% endif %}
-                                    </strong></td>
-                                    <td class="qty text-center"><strong>{{product.quantity}}</strong></td>
-                                    <td class="total text-center"><strong class="primary-color">$
-                                    </strong></td>
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
                                     <td class="text-right"><a href="/order/deletefromcart/{{ product.id }}" onclick="return confirm('Delete ! Are you sure?')" class="main-btn icon-btn"><i class="fa fa-close"></i></a></td>
                                 </tr>
 

@@ -7,31 +7,17 @@ from mptt.models import MPTTModel
 
 # Create your models here.
 
-<<<<<<< HEAD
-
-class Category (models.Model):
-=======
 class Category (MPTTModel):
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
     STATUS = (
         ('True', 'True'),
         ('False', 'False'),
     )
-<<<<<<< HEAD
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    keywords = models.CharField(max_length=255)
-    description = models.TextField(max_length=255)
-    image = models.ImageField(blank=True, upload_to='images/')
-    status = models.CharField(max_length=10, choices=STATUS)
-=======
     parent = TreeForeignKey('self',blank=True, null=True ,related_name='children', on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     keywords = models.CharField(max_length=255)
     description = models.TextField(max_length=255)
     image=models.ImageField(blank=True,upload_to='image/')
     status=models.CharField(max_length=10, choices=STATUS)
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
     slug = models.SlugField(null=False, unique=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -46,8 +32,6 @@ class Category (MPTTModel):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
-<<<<<<< HEAD
-=======
 # separating category with subcategory in category selection
     def __str__(self):                    
         full_path = [self.title]
@@ -58,7 +42,6 @@ class Category (MPTTModel):
         return ' / '.join(full_path[::-1])
 
 
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
 
 class Product(models.Model):
     STATUS = (
@@ -70,11 +53,7 @@ class Product(models.Model):
     title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-<<<<<<< HEAD
-    image = models.ImageField(blank=True, upload_to='images/')
-=======
     image=models.ImageField(blank=True,upload_to='image/')
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
     price = models.FloatField()
     amount = models.IntegerField()
     minamount = models.IntegerField()
@@ -95,15 +74,9 @@ class Product(models.Model):
 
 
 class Images(models.Model):
-<<<<<<< HEAD
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50, blank=True)
-    image = models.ImageField(blank=True, upload_to='images/')
-=======
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
     title = models.CharField(max_length=50,blank=True)
     image = models.ImageField(blank=True, upload_to='image/')
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
 
     def __str__(self):
         return self.title

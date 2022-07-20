@@ -1,13 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from e_shop.models import Setting
-
-<<<<<<< HEAD
-=======
-# Create your views here.
-from e_shop.models import Setting
 from product.models import Category, Product
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
 
 
 def index(request):

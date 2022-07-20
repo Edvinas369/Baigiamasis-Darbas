@@ -60,16 +60,10 @@ def shopcart(request):
     total = 0
     for product in shopcart:
         total += product.product.price * product.quantity
-<<<<<<< HEAD
-    context={'shopcart': shopcart,
-            'category': category,
-            'total': total,}
-=======
     context = {'shopcart': shopcart,
                'category': category,
                'total': total,
                }
->>>>>>> 476df66ba2d73acb54286701a9167bd827d9ec96
     return render(request, 'cart_products.html', context)
 
     
