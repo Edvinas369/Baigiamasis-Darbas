@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'ckeditor',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -170,7 +171,7 @@ SITE_ID = 1
 
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
-CKEDITOR_UPLOAD_PATH = 'images/'
+CKEDITOR_UPLOAD_PATH = 'image/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
