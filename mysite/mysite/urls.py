@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from unicodedata import category
 from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
@@ -33,10 +34,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
-
     path('about/', views.about, name='about'),
     path('shopcart/', OrderViews.shopcart, name='shopcart'),
     path('user_profile/', include('user_profile.urls')),
+    path('category/<int:id>/<slug:slug>', views.category_products , name='category_products'),
 
 
 
