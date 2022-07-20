@@ -17,7 +17,6 @@ def index(request):
     context={'setting': setting,
             'category': category,
             'page': page,
-            'category': category,
             'products_slider' : products_slider,
             'products_latest' : products_latest,
             'products_picked' : products_picked,

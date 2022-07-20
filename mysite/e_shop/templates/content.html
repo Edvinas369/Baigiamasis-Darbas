@@ -13,17 +13,16 @@
         </div>
       </div>
       <!-- section title -->
-
       {% for product in products_latest %}
-
       <!-- Product Single -->
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
-            <a href="/product/{{product.id}}/{{product.slug}}" </a>
-            <img src="{{ product.image.url }}" alt="" style="height: 150px" />
+            <a href="/product/{{product.id}}/{{product.slug}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+            <img src="{{ product.image.url }}" alt="" style="height: 200px">
           </div>
           <div class="product-body">
+            <h3 class'product-price'>€{{product.price}}</h3>
             <div class="product-rating">
               <i
                 class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"
@@ -38,35 +37,21 @@
                 class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"
-              ></i>
-              {{ product.avaregereview}}/{{ product.countreview}}
+                class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
             </div>
             <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
             <div class="product-btns">
-              <button class="main-btn icon-btn">
-                <i class="fa fa-heart"></i>
-              </button>
-              <button class="main-btn icon-btn">
-                <i class="fa fa-exchange"></i>
-              </button>
-              {% if product.variant == 'None'%}
-              <a
-                href="/order/addtoshopcart/{{ product.id }}"
-                class="primary-btn add-to-cart"
-                ><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-              
-              {% else %}
-              <a
-              <a href="/product/{{product.id}}/{{product.slug}}" class= "main-btn quick-view"><i claas="fa fa-search-plus"></i> Quick view</a>
-              {% endif %}
+                <button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
+                <button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
+                <a href="/order/addtoshopcart/{{product.id}}" class='primary-btn add-to-cart'><class="fa fa-shopping-cart"></i> Add to Cart</a>
+            </div>
             </div>
           </div>
         </div>
       </div>
       <!-- /Product Single -->
       {% endfor %}
-     </div>
+    </div>
     <!-- /row -->
 
     <!-- row -->
@@ -85,13 +70,11 @@
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="product product-single">
           <div class="product-thumb">
-            <a
-              href="/product/{{product.id}}/{{product.slug}}"
-              class="main-btn quick-view"
-              ><i class="fa fa-search-plus"></i> Quick view</a>
-            <img src="{{ product.image.url }}" alt="" style="height: 150px" />
+            <a href="/product/{{product.id}}/{{product.slug}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+            <img src="{{ product.image.url }}" alt="" style="height: 200px" />
           </div>
           <div class="product-body">
+            <h3 class'product-price'>€{{product.price}}</h3>
             <div class="product-rating">
               <i
                 class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"
@@ -106,31 +89,14 @@
                 class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"
               ></i>
               <i
-                class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"
-              ></i>
-              {{ product.avaregereview}}/{{ product.countreview}}
+                class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
             </div>
             <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
             <div class="product-btns">
-              <button class="main-btn icon-btn">
-                <i class="fa fa-heart"></i>
-              </button>
-              <button class="main-btn icon-btn">
-                <i class="fa fa-exchange"></i>
-              </button>
-              {% if product.variant == 'None'%}
-              <a
-                href="{% url 'addtoshopcart' product.id %}"
-                class="primary-btn add-to-cart"
-                ><i class="fa fa-shopping-cart"></i> Add to Cart</a
-              >
-              {% else %}
-              <a
-                href="/product/{{product.id}}/{{product.slug}}"
-                class="primary-btn add-to-cart"
-                ><i class="fa fa-shopping-cart"></i> Detail</a
-              >
-              {% endif %}
+                <button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
+                <button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
+                <a href="/order/addtoshopcart/{{product.id}}" class='primary-btn add-to-cart'><class="fa fa-shopping-cart"></i> Add to Cart</a>
+            </div>
             </div>
           </div>
         </div>
