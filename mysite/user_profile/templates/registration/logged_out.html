@@ -3,6 +3,6 @@
 {% block content %}
 <div class="container">
     <h1>{% trans 'BYE BYE!' %}</h1>
-    {% trans 'You have been successfully logged out' %}. <a href="{% url 'login' %}">{% trans 'login'|capfirst %}</a> {% trans 'again' %}.
+    {% trans 'You have been successfully logged out' %} <a href="{% url 'login' %}">{% trans 'login'|capfirst %}</a> {% trans 'again' %}.
 </div>
 {% endblock content %}

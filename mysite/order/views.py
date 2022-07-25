@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from product.models import Product, Category
+from product.models import Category
 from order.models import ShopCart, ShopCartForm, OrderForm, Order, OrderProduct
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.utils.translation import gettext as _
 import string
 import random
 from user_profile.models import Profile
@@ -37,7 +38,7 @@ def addtoshopcart(request, id):
                 data.product_id = id
                 data.quantity = form.cleaned_data['quantity']
                 data.save()
-        messages.success(request, 'Product added to Shopcart')
+        messages.success(request, _('Product added to Shopcart'))
 
     else:
         if control == 1:
@@ -50,7 +51,7 @@ def addtoshopcart(request, id):
             data.product_id = id
             data.quantity = 1
             data.save()
-        messages.success(request, 'Product added to Shopcart')
+        messages.success(request, _('Product added to Shopcart'))
         return HttpResponseRedirect(url)
 
 def shopcart(request):
@@ -70,7 +71,7 @@ def shopcart(request):
 @login_required
 def deletefromcart(request, id):
     ShopCart.objects.filter(id=id).delete()
-    messages.success(request, "Your item deleted form Shopcart.")
+    messages.success(request, _('Your item deleted form Shopcart.'))
     return redirect('/shopcart')
 
 
@@ -91,6 +92,7 @@ def orderproduct(request):
             data.first_name = form.cleaned_data['first_name'] 
             data.last_name = form.cleaned_data['last_name']
             data.address = form.cleaned_data['address']
+            data.country = form.cleaned_data['country']
             data.city = form.cleaned_data['city']
             data.phone = form.cleaned_data['phone']
             data.user_id = current_user.id
@@ -110,18 +112,14 @@ def orderproduct(request):
                 detail.amount = product.amount
                 detail.save()
 
-                
-                product = Product.objects.get(id=product.product_id)
-                product.amount -= product.quantity
-                product.save()
 
             ShopCart.objects.filter(user_id=current_user.id).delete() 
             request.session['cart_items']=0
-            messages.success(request, "Your Order has been completed. Thank you ")
+            messages.success(request, _('Your Order has been completed. Thank you.'))
             return render(request, 'Order_Completed.html',{'ordercode':ordercode,'category': category})
         else:
             messages.warning(request, form.errors)
-            return HttpResponseRedirect("/order/orderproduct")
+            return redirect('/order/orderproduct')
 
     form= OrderForm()
     shopcart = ShopCart.objects.filter(user_id=current_user.id)

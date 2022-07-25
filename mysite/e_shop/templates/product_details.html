@@ -13,7 +13,7 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">{% trans "Home"|capfirst %}</a></li>
                 <li><a href="/category/{{ product.category.id }}/{{ product.category.slug }}">{{ product.category.title }}</a></li>
                 <li class="active">{{ product.title }}</li>
             </ul>
@@ -62,7 +62,7 @@
                     <div class="col-md-6">
                         <div class="product-body">
                             <div class="product-label">
-                                <span>New</span>
+                                <span>{% trans "New"|capfirst %}</span>
                                 <span class="sale">-20%</span>
                             </div>
                             <h2 class="product-name">{{ product.title }}</h2>
@@ -74,20 +74,20 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-o empty"></i>
                                 </div>
-                                <a href="#"> Review(s) / Add Review</a>
+                                <a href="#">{% trans "Review(s) / Add Review"|capfirst %}</a>
                             </div>
-                            <p><strong>Availability:</strong> In Stock</p>
-                            <p><strong>Brand:</strong> E-SHOP</p>
+                            <p><strong>{% trans "Availability:"|capfirst %}</strong>{% trans "In Stock"|capfirst %} </p>
+                            <p><strong>{% trans "Brand:"|capfirst %}</strong>{% trans "E-SHOP"|capfirst %} </p>
                             <p>{{ product.description }}</p>
                             <div class="product-options" >
                                 <ul class="size-option">
-                                    <li><span class='text-uppercase'>Size:</span></li>
+                                    <li><span class='text-uppercase'>{% trans "Size:"|capfirst %}</span></li>
                                     <li> class='active'><a href='#'>€</a></li>
                                     <li><a href='#'>XL</a></li>
                                     <li><a href='#'>L</a></li>
                                 </ul>
                                 <ul class="color-option">
-                                    <li><span class='text-uppercase'>Color:</span></li>
+                                    <li><span class='text-uppercase'>{% trans "Color:"|capfirst %}</span></li>
                                     <li> class='active'><a href='#' style='...'></a></li>
                                     <li><a href='#'>style='....'</a></li>
                                     <li><a href='#'>style='....'</a></li>
@@ -101,7 +101,7 @@
                                     <span class='test-uppercase'>QTY: </span>
                                     <input class='input' name='quantity' type='number' value='1' min='1' max='{{product.amount}}'>
                                 </div>
-                                <button type='submit' class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i> Add to Cart </button>
+                                <button type='submit' class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i>{% trans "Add to Cart"|capfirst %} </button>
                                 </form>
 
                                 <div class='pull-right'>
@@ -115,7 +115,7 @@
                     <div class='col-md-12'>
                         <div class='product-tab'>
                             <ul class='tab-nav'>
-                                <li class='active'><a data-toggle='tab' href='#tab1'>Details</a></li>
+                                <li class='active'><a data-toggle='tab' href='#tab1'>{% trans "Details"|capfirst %}</a></li>
                                 <li><a data-toggle='tab' href='#tab2'<Review (3)</a></li>
                             </ul>
                             <div class='tab-content'>
@@ -159,7 +159,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="text-uppercase">Write Your Review</h4>
+                                            <h4 class="text-uppercase">{% trans "Write Your Review"|capfirst %}</h4>
                                             
                                             {% if messages %}
                                                 {% for message in messages %}
@@ -179,7 +179,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-rating">
-                                                        <strong class="text-uppercase">Your Rating: </strong>
+                                                        <strong class="text-uppercase">{% trans "Your Rating: "|capfirst %}</strong>
                                                         <div class="stars">
                                                             <input type="radio" id="star5" name="rate" value="5" /><label for="star5"></label>
                                                             <input type="radio" id="star4" name="rate" value="4" /><label for="star4"></label>
@@ -190,9 +190,9 @@
                                                     </div>
                                                 </div>
                                                 {% if user.id is not None %}
-                                                    <button class="primary-btn">Submit</button>
+                                                    <button class="primary-btn">{% trans "Submit"|capfirst %}</button>
                                                 {% else %}
-                                                    You must be logged in to post a review
+                                                {% trans "You must be logged in to post a review"|capfirst %}
                                                 {% endif %}
                                             </form>
                                         </div>

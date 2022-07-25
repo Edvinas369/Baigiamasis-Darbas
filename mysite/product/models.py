@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.safestring import mark_safe
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.translation import gettext_lazy as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 

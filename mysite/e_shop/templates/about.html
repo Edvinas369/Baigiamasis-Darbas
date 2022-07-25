@@ -1,6 +1,6 @@
 {% extends 'homebase.html' %}
 {% load i18n %}
-{% block title %} About Us- {{ setting.title }} {% endblock %}
+{% block title %}{% trans "About Us"|capfirst %} {{ setting.title }} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -13,7 +13,7 @@
 		<div class="container">
 			<ul class="breadcrumb">
                 <li><a href="{% url 'e_shop' %}">{% trans "Home" %}</a></li>
-                <li class="active">{% trans "About Us" %}</li>
+                <li class="active">{% trans "About Us"|capfirst %}</li>
 			</ul>
 		</div>
 	</div>
@@ -25,8 +25,12 @@
 		<div class="container">
 			<!-- row -->
 			<div class="row">
-                {{ setting.aboutus|safe }}
-			</div>
+				<div class="section-title">
+					<h3 class="title">{% trans "About Us"|capfirst %}</h3>
+				</div>
+				<div >
+					{{ setting.aboutus|safe }}
+				</div>
 			<!-- /row -->
 		</div>
 		<!-- /container -->

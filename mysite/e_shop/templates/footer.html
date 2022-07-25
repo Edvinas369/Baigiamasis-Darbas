@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!-- FOOTER -->
 <footer id="footer" class="section section-grey">
   <!-- container -->
@@ -69,9 +70,9 @@
           <h3 class="footer-header">Stay Connected</h3>
           <form>
             <div class="form-group">
-              <input class="input" placeholder="Enter Email Address" />
+              <input class="input" placeholder="{% trans "Enter Email Address"|capfirst %}" />
             </div>
-            <button class="primary-btn">Join Newslatter</button>
+            <button class="primary-btn">{% trans "Join Newslatter"|capfirst %}</button>
           </form>
         </div>
       </div>

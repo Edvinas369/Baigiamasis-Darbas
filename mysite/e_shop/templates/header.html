@@ -5,7 +5,7 @@
     <div id="top-header">
         <div class="container">
           <div class="pull-left">
-            <span>{% trans "Welcome to EDVIGNA BALTIC!" %}</span> 
+            <span>{% trans "Welcome to EDVIGNA BALTIC!"|capfirst %}</span> 
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{message.tags}}" role="alert">
@@ -28,34 +28,13 @@
               </a>
             </div>
             <!-- /Logo -->
-            <script>
-              €(function() {
-                €("#query").autocomplete({
-                  source: "/search_auto/",
-                  select: function(event, ui) { //item selected
-                    AutoCompleteSelectHandler(event, ui)
-                  },
-                  minLength: 2,
-                });
-              });
-   
-              function AutoCompleteSelectHandler(event, ui) {
-                var selectedObj = ui.item;
-              }
-            </script>
             <!-- Search -->
             <div class="header-search">
-              <form action="/search/" method="post"> {% csrf_token %} <input id="query" name="query" class="input search-input" type="text" placeholder="Enter your keyword">
-                <select name="catid" class="input search-categories">
-                  <option value="0">{% trans "All Categories" %}</option> {% if node.is_leaf_node %} <option value="{{ node.id }}">{{ node.title }}</option> {% endif %} {% if not node.is_leaf_node %} <optgroup label="{{ node.title }}">
-                    {{ children }}
-                  </optgroup> {% endif %}
-                </select>
-                <button class="search-btn">
-                  <i class="fa fa-search"></i>
-                </button>
-              </form>
-            </div>
+                <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
+                <input name="query" class="form-control" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+          </div>
             <!-- /Search -->
           </div>
           <div class="pull-right">
@@ -63,7 +42,7 @@
               <!-- Account -->
               <li class="header-account dropdown default-dropdown"> {% if user.id is not None %} <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
                   <div class="header-btns-icon">
-                    <img src="{{ user.img.url }}" style="height: 40px; border-radius: 30%">
+                    <i class="fa fa-user-o"></i>
                   </div>
                   <strong class="text-uppercase">{{ user.first_name }}
                     <i class="fa fa-caret-down"></i>
@@ -72,10 +51,6 @@
                   <li>
                     <a href="{% url 'profile'%}">
                       <i class="fa fa-user-o"></i> {% trans "My Account" %} </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <i class="fa fa-exchange"></i> {% trans "My Orders " %} </a>
                   </li>
                   <li>
                     <i class="ti-power-off"></i>
@@ -89,7 +64,6 @@
                 <a href="/shopcart">
                   <div class="header-btns-icon">
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="qty">3</span>
                   </div>
                   <br>
                 </a>

@@ -1,4 +1,5 @@
 {% extends "homebase.html" %}
+{% load i18n %}
 
 {% block body %}
         {% if messages %}
@@ -13,28 +14,38 @@
             <h3>Register</h3>
             <br />
             <form method="post"> {% csrf_token %} <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">{% trans 'Username'|capfirst %}</label>
                 <input name="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
-                <small id="usernameHelp" class="form-text text-muted">Up to 150 characters.</small>
+                <small id="usernameHelp" class="form-text text-muted">{% trans 'Up to 150 characters'|capfirst %}</small>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
+                <label for="exampleInputEmail1">{% trans 'Email'|capfirst %}</label>
                 <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We will not share with anyone, we will not send any spam. Required to send a new password. </small>
+                <small id="emailHelp" class="form-text text-muted">{% trans 'We will not share with anyone, we will not send any spam. Required to send a new password.'|capfirst %} </small>
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
+                <label for="name">{% trans 'Name'|capfirst %}</label>
+                <input name="name" type="name" class="form-control" id="name" aria-describedby="pwdHelp">
+                <small id="pwdHelp" class="form-text text-muted" {%  trans "Insert your Name"|capfirst %}  </small>
+              </div>
+              <div class="form-group">
+                <label for="lastname">{% trans 'Lastname'|capfirst %}</label>
+                <input name="lastname" type="lastname" class="form-control" id="lastname" aria-describedby="pwdHelp">
+                <small id="pwdHelp" class="form-text text-muted" {%  trans "Insert your Lastname"|capfirst %}  </small>
+              </div>
+              <div class="form-group">
+                <label for="password">{% trans 'Password'|capfirst %}</label>
                 <input name="password" type="password" class="form-control" id="password" aria-describedby="pwdHelp">
-                <small id="pwdHelp" class="form-text text-muted">At least 8 characters. Can't be alone numbers</small>
+                <small id="pwdHelp" class="form-text text-muted" {%  trans "At least 8 characters. Can't be alone numbers"|capfirst %}  </small>
               </div>
               <div class="form-group">
-                <label for="password2">Repeat the password</label>
+                <label for="password2">{% trans 'Repeat the password'|capfirst %}</label>
                 <input name="password2" type="password" class="form-control" id="password2" aria-describedby="pwd2Help">
               </div>
-              <button type="submit" class="btn btn-primary register-button">Register</button>
+              <button type="submit" class="btn btn-primary register-button">{% trans "Register"|capfirst %}</button>
             </form>
-            <p>If you have registered before, <a href="/accounts/login">
-                <strong>log in.</strong>
+            <p>{% trans "If you have registered before,"|capfirst %} <a href="/accounts/login">
+                <strong>{% trans "log in"|capfirst %}.</strong>
               </a>
             </p>
           </div> {% endblock %}

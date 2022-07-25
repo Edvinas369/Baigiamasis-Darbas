@@ -1,5 +1,6 @@
 {% extends 'homebase.html' %}
-{% block title %}{{ catdata.title }} Products{% endblock %}
+{% load i18n %}
+{% block title %}{{ catdata.title }}{% trans "Products"|capfirst %}{% endblock %}
 {% block description %} {{ catdata.description }} {% endblock %}
 {% block keywords %} {{ category.keywords }} {% endblock %}
 
@@ -11,8 +12,8 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Home</a></li>
-				<li class="active">{{ catdata.title }} Products </li>
+				<li><a href="/">{% trans "Home"|capfirst %}</a></li>
+				<li class="active">{{ catdata.title }}{% trans "Products"|capfirst %} </li>
 			</ul>
 		</div>
 	</div>
@@ -27,7 +28,7 @@
 				<div id="aside" class="col-md-3">
 					<!-- aside widget -->
 					<div class="aside">
-						<h3 class="aside-title">Shop by:</h3>
+						<h3 class="aside-title">{% trans "Shop by:"|capfirst %}</h3>
 						<ul class="filter-list">
 							<li><span class="text-uppercase">color:</span></li>
 							<li><a href="#" style="color:#FFF; background-color:#8A2454;">Camelot</a></li>
@@ -102,7 +103,7 @@
 						<h3 class="aside-title">Top Rated Product</h3>
 						<!-- widget product -->
 						<div class="product product-widget">
-							<div class="product-thumb">
+							<div class="product-thumb ">
 								<img src="./img/thumb-product01.jpg" alt="">
 							</div>
 							<div class="product-body">
@@ -121,7 +122,7 @@
 
 						<!-- widget product -->
 						<div class="product product-widget">
-							<div class="product-thumb">
+							<div class="product-thumb ">
 								<img src="./img/thumb-product01.jpg" alt="">
 							</div>
 							<div class="product-body">
@@ -211,7 +212,7 @@
                                         </a></td>
 										<td class="details"> <a href="{% url 'product_detail' product.id product.slug %}">{{ product.title }}</a>	</td>
 										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-
+										<td class="total text-center"><strong class="primary-color">${{product.price}} </strong></td>
 										<td class="text-right"><a href="/order/addtoshopcart/{{product.id}}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a></td>
 									</tr>
                                     {% endfor %}

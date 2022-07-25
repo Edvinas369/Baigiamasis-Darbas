@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>{% block title %} My Home Page {% endblock %}</title>
+    <title>{% block title %}{% trans "My Home Page"|capfirst %}{% endblock %}</title>
     <meta name="keywords" content="{% block keywords %} Home Keywords {% endblock %}">
     <meta name="description" content="{% block description %} Home description  {% endblock %}">
 
@@ -44,7 +44,6 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     {% block head %}
 

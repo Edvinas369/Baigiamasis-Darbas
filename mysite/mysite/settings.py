@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from django.contrib.messages import constants as messages
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import os
 

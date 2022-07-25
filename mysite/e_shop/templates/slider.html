@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 	<!-- HOME -->
 	<div id="home">
 		<!-- container -->
@@ -14,7 +15,7 @@
 						<img src="{{ product.image.url }}" alt="" style="height: 600px">
 						<div class="banner-caption text-center">
 							<h1>{{ product.title }}   </h1>  
-							<a href="/product/{{product.id}}/{{product.slug}}" class="primary-btn">Shop Now</a>
+							<a href="/product/{{product.id}}/{{product.slug}}" class="primary-btn">{% trans "Shop Now"|capfirst %}</a>
 
 						</div>
 					</div>
