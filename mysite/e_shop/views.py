@@ -4,11 +4,11 @@ from e_shop.models import Setting
 
 # Create your views here.
 from e_shop.models import Setting
-from product.models import Category, Product
+from product.models import Category, Product, Images
 
 
 def index(request):
-    setting = Setting.objects.filter(pk=1)
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     products_slider = Product.objects.all().order_by('id')[:4] # Pirmi keturi produktai 
     products_latest = Product.objects.all().order_by('-id')[:4] # Paskutiniai 4 produktai 
@@ -33,13 +33,13 @@ def login(request):
 
 
 def about(request):
-    setting = Setting.objects.filter(pk=1)
+    setting = Setting.objects.get(pk=1)
     context = {'setting': setting}
     return render(request, 'about.html', context)
 
 
 def contact(request):
-    setting = Setting.objects.filter(pk=1)
+    setting = Setting.objects.get(pk=1)
     context = {'setting': setting}
     return render(request, 'contactus.html', context)
 
@@ -52,10 +52,22 @@ def refund(request):
     return render(request, 'refund.html')
 
 
-def product_details(request):
-    return render(request, 'product_details.html')
+# def product_details(request):
+#     return render(request, 'product_details.html')
 
 
 def category_products(request,id,slug):
     products = Product.objects.filter (category_id=id)
-    return HttpResponse(products)
+    category = Category.objects.all()
+    context={'products' : products,
+            'category': category }
+    return render(request, 'category_products.html', context)
+
+def product_details(request,id,slug):
+    product = Product.objects.get(pk=id)
+    category = Category.objects.all()
+    images = Images.objects.filter(product_id=id)
+    context={'product' : product,
+            'images' : images,
+            'category': category }
+    return render(request, 'product_details.html', context)

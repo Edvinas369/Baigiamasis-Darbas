@@ -5,9 +5,9 @@
     <!-- container -->
     <div class="container">
         <div id="responsive-nav">
-
-
             
+            
+        
             <!-- category nav -->
             {% if page %}
                 <div class="category-nav">
@@ -16,10 +16,10 @@
             {% endif %}
 
             <span class="category-header">Categories <i class="fa fa-list"></i></span>
-
+            {% load myapptags %}
+            {% categorylist as category %}
             {% load mptt_tags %}
-            <ul class="category-list">
-                
+            <ul class="category-list"> 
                 {% recursetree category %}
                     <li class="dropdown side-dropdown">
                         <a href="/category/{{ node.id }}/{{ node.slug }}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} <i class="fa fa-angle-right"></i></a>
