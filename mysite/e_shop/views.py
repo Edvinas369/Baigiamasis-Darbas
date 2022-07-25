@@ -6,6 +6,7 @@ from product.models import Category, Product
 from django.utils.translation import gettext as _
 from django.db.models import Q
 from product.models import Product
+from product.models import Category, Product, Images
 
 
 def index(request):
@@ -53,19 +54,24 @@ def refund(request):
     return render(request, 'refund.html')
 
 
-def product_details(request):
-    return render(request, 'product_details.html')
-
-
 def category_products(request,id,slug):
     products = Product.objects.filter (category_id=id)
-    return HttpResponse(products)
-
-
-from django.db.models import Q
+    category = Category.objects.all()
+    context={'products' : products,
+            'category': category }
+    return render(request, 'category_products.html', context)
 
 def search(request):
-
     query = request.GET.get('query')
     search_results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'search.html', {'search_results': search_results, 'query': query})
+
+
+def product_details(request,id,slug):
+    product = Product.objects.get(pk=id)
+    category = Category.objects.all()
+    images = Images.objects.filter(product_id=id)
+    context={'product' : product,
+            'images' : images,
+            'category': category }
+    return render(request, 'product_details.html', context)

@@ -61,37 +61,15 @@
                     </div>
                     <div class="col-md-6">
                         <div class="product-body">
-                            <div class="product-label">
-                                <span>{% trans "New"|capfirst %}</span>
-                                <span class="sale">-20%</span>
-                            </div>
                             <h2 class="product-name">{{ product.title }}</h2>
                             <div>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <a href="#">{% trans "Review(s) / Add Review"|capfirst %}</a>
                             </div>
+							<h3 class="product-price">{{ product.price }}€</h3>
                             <p><strong>{% trans "Availability:"|capfirst %}</strong>{% trans "In Stock"|capfirst %} </p>
                             <p><strong>{% trans "Brand:"|capfirst %}</strong>{% trans "E-SHOP"|capfirst %} </p>
                             <p>{{ product.description }}</p>
                             <div class="product-options" >
-                                <ul class="size-option">
-                                    <li><span class='text-uppercase'>{% trans "Size:"|capfirst %}</span></li>
-                                    <li> class='active'><a href='#'>€</a></li>
-                                    <li><a href='#'>XL</a></li>
-                                    <li><a href='#'>L</a></li>
-                                </ul>
-                                <ul class="color-option">
-                                    <li><span class='text-uppercase'>{% trans "Color:"|capfirst %}</span></li>
-                                    <li> class='active'><a href='#' style='...'></a></li>
-                                    <li><a href='#'>style='....'</a></li>
-                                    <li><a href='#'>style='....'</a></li>
-                                </ul>
+                                
                             </div>   
 
                             <div class='product-btns'>
@@ -104,11 +82,7 @@
                                 <button type='submit' class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i>{% trans "Add to Cart"|capfirst %} </button>
                                 </form>
 
-                                <div class='pull-right'>
-                                    <button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-                                    <button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
-                                    <button class='main-btn icon-btn'><i class='fa fa-share-alt'></i></button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -118,6 +92,7 @@
                                 <li class='active'><a data-toggle='tab' href='#tab1'>{% trans "Details"|capfirst %}</a></li>
                                 <li><a data-toggle='tab' href='#tab2'<Review (3)</a></li>
                             </ul>
+                            
                             <div class='tab-content'>
                                 <div id='tab1' class='tab-pane fade in active'>
                                     <p>

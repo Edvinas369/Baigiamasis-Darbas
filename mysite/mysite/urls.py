@@ -37,6 +37,7 @@ urlpatterns = [
     path('shopcart/', OrderViews.shopcart, name='shopcart'),
     path('user_profile/', include('user_profile.urls')),
     path('category/<int:id>/<slug:slug>', views.category_products , name='category_products'),
+    path('product/<int:id>/<slug:slug>', views.product_details , name='product_details'),
 
 
 
