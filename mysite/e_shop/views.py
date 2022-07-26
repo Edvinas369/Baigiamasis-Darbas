@@ -51,11 +51,6 @@ def cart(request):
 def refund(request):
     return render(request, 'refund.html')
 
-
-# def product_details(request):
-#     return render(request, 'product_details.html')
-
-
 def category_products(request,id,slug):
     products = Product.objects.filter (category_id=id)
     category = Category.objects.all()
