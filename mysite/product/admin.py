@@ -4,9 +4,9 @@ from django.contrib import admin
 from product.models import Category, Product, Images
 from mptt.admin import DraggableMPTTAdmin
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['title', 'parent', 'status']
-    list_filter = ['status']
+# class CategoryAdmin(admin.ModelAdmin):
+#     list_display = ['title', 'parent', 'status']
+#     list_filter = ['status']
 
 class CategoryAdmin2(DraggableMPTTAdmin):
     mptt_indent_field = "title"
