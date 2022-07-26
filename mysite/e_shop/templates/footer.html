@@ -1,0 +1,84 @@
+{% load static %}
+<!-- FOOTER -->
+<footer id="footer" class="section section-grey">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <!-- footer logo -->
+          <div class="footer-logo">
+            <a class="logo" href="/">
+              <img src="{% static 'img/logo2.png' %}"" />
+						</a>
+					</div>
+					<!-- /footer logo -->
+					<!-- footer social -->
+					<ul class=" footer-social">
+              <li>
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-pinterest"></i>
+                </a>
+              </li>
+              </ul>
+              <!-- /footer social -->
+          </div>
+        </div>
+        <!-- /footer widget -->
+        <!-- footer widget -->
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <div class="footer">
+            <h3 class="footer-header">My Account</h3>
+            <ul class="list-links">
+              <li>
+                <a href="{% url 'profile' %}">My Account</a>
+              </li>
+              <li>
+                <a href="{% url 'shopcart' %}">Checkout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /footer widget -->
+        <div class="clearfix visible-sm visible-xs"></div>
+        <!-- footer widget -->
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <div class="footer">
+            <h3 class="footer-header">Customer Service</h3>
+            <ul class="list-links">
+              <li>
+                <a href="{% url 'about' %}">About US</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /footer widget -->
+        <!-- /FOOTER -->
+        <!-- jQuery Plugins -->
+        <script src="{% static '' %}js/bootstrap.min.js"></script>
+        <script src="{% static '' %}js/slick.min.js"></script>
+        <script src="{% static '' %}js/nouislider.min.js"></script>
+        <script src="{% static '' %}js/jquery.zoom.min.js"></script>
+        <script src="{% static '' %}js/main.js"></script>

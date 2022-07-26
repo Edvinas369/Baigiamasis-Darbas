@@ -1,0 +1,104 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} {{ product.title }} {% endblock %}
+{% block description %} {{ product.description }} {% endblock %}
+{% block keywords %} {{ product.keywords }} {% endblock %}
+
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block body %}
+
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb">
+        <div class="container">
+          <ul class="breadcrumb">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/category/{{ product.category.id }}/{{ product.category.slug }}">{{ product.category.title }}</a>
+            </li>
+            <li class="active">{{ product.title }}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- /BREADCRUMB -->
+      <!-- section -->
+      <div class="section">
+        <!-- container -->
+        <div class="container">
+          <!-- row -->
+          <div class="row">
+            <!--  Product Details -->
+            <div class="product product-details clearfix">
+              <div class="col-md-6">
+                <div id="product-main-view">
+                  <div class="product-view">
+                    <img src="{{ product.image.url }}" alt="" style="height: 400px">
+                  </div> {% for product in images %} <div class="product-view">
+                    <img src="{{ product.image.url }}" alt="" style="height: 400px">
+                  </div> {% endfor %} {% for product in images %} <div class="product-view active">
+                    <img src="{{ product.image.url }}" alt="" style="height: 400px">
+                  </div> {% endfor %}
+                </div>
+                <div id="product-view">
+                  <div class="product-view">
+                    <img src="{{ product.image.url }}" alt="">
+                  </div> {% for product in images %} <div class="product-view">
+                    <img src="{{ product.image.url }}" alt="aa">
+                  </div> {% endfor %}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="product-body">
+                  <h2 class="product-name">{{ product.title }}</h2>
+                  <div></div>
+                  <h3 class="product-price">{{ product.price }}€</h3>
+                  <p>
+                    <strong>Availability:</strong>In Stock
+                  </p>
+                  <p>
+                    <strong>Brand:</strong>E-SHOP
+                  </p>
+                  <p>{{ product.description }}</p>
+                  <div class="product-options"></div>
+                  <div class='product-btns'>
+                    <form action='/order/addtoshopcart/{{product.id}}' method='post'> {% csrf_token %} <div class='qty-input'>
+                        <span class='test-uppercase'>QTY: </span>
+                        <input class='input' name='quantity' type='number' value='1' min='1' max='{{product.amount}}'>
+                      </div>
+                      <td class="text-right">
+                        <a href="/order/addtoshopcart/{{product.id}}" class="primary-btn add-to-cart">
+                          <i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                      </td>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class='col-md-12'>
+                <div class='product-tab'>
+                  <ul class='tab-nav'>
+                    <li class='active'>
+                      <a data-toggle='tab' href='#tab1'>Details</a>
+                    </li>
+                  </ul>
+                  <div class='tab-content'>
+                    <div id='tab1' class='tab-pane fade in active'>
+                      <p>
+                        {{ product.detail |safe}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Product Details -->
+      </div>
+      <!-- /row -->
+      </div>
+      <!-- /container -->
+      </div>
+      <!-- /section --> 
+      {% endblock %}
