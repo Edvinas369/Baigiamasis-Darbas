@@ -1,6 +1,5 @@
 {% extends 'homebase.html' %}
-{% load i18n %}
-{% block title %}{% trans "Order Complated"|capfirst %} {% endblock %}
+{% block title %}Order Completed{% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -10,36 +9,36 @@
 
     <!-- BREADCRUMB -->
     <div id="breadcrumb">
-        <div class="container">
-          <ul class="breadcrumb">
-            <li>
-              <a href="/">{% trans "Home"|capfirst %}</a>
-            </li>
-            <li class="active">{% trans "Order Completed"|capfirst %}</li>
-          </ul>
-        </div>
+      <div class="container">
+        <ul class="breadcrumb">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li class="active">Order Completed</li>
+        </ul>
       </div>
-      <!-- /BREADCRUMB -->
-      <!-- section -->
-      <div class="section">
-        <!-- container -->
-        <div class="container">
-          <!-- row -->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="order-summary clearfix">
-                <div class="section-title">
-                  <h3 class="title">{% trans "Order Complated"|capfirst %}</h3>
-                </div>
-                <h3>{% trans "Your order is completed"|capfirst %}</h3>
-                <h3>{% trans "Order Code :"|capfirst %} {{ ordercode }}</h3>
-                <h3>{% trans "Thank You"|capfirst %}</h3>
-                <hr>
+    </div>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+      <!-- container -->
+      <div class="container">
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="order-summary clearfix">
+              <div class="section-title">
+                <h3 class="title">Order Completed</h3>
               </div>
+              <h3>Your order is completed</h3>
+              <h3>Order Code : {{ ordercode }}</h3>
+              <h3>Thank You</h3>
+              <hr>
             </div>
           </div>
-          <!-- /row -->
         </div>
-        <!-- /container -->
+        <!-- /row -->
       </div>
-      <!-- /section --> {% endblock %}
+      <!-- /container -->
+    </div>
+    <!-- /section --> {% endblock %}

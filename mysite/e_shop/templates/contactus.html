@@ -1,6 +1,5 @@
 {% extends 'homebase.html' %}
-{% load i18n %}
-{% block title %}{% trans "Contact Us"|capfirst %}{{ setting.title }} {% endblock %}
+{% block title %}Contact Us{{ setting.title }} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -11,36 +10,33 @@
     <!-- BREADCRUMB -->
     <div id="breadcrumb">
         <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="{% url 'e_shop' %}">{% trans "Home" %}</a></li>
-                <li class="active">{% trans "Contact Page"|capfirst %}</li>
-            </ul>
+          <ul class="breadcrumb">
+            <li>
+              <a href="{% url 'e_shop' %}">Home</a>
+            </li>
+            <li class="active">Contact Page</li>
+          </ul>
         </div>
-    </div>
-    <!-- /BREADCRUMB -->
-
-    <!-- section -->
-    <div class="section">
+      </div>
+      <!-- /BREADCRUMB -->
+      <!-- section -->
+      <div class="section">
         <!-- container -->
         <div class="container">
-            <!-- row -->
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="shiping-methods">
-                        <div class="section-title">
-                            <h3 class="title">{% trans "Contact Information"|capfirst %}</h3>
-                        </div>
-                        <div >
-                            {{ setting.contact|safe }}
-                        </div>
-
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="shiping-methods">
+                <div class="section-title">
+                  <h3 class="title">Contact Information</h3>
+                </div>
+                <div>
+                  {{ setting.contact|safe }}
+                </div>
+              </div>
+              <!-- /row -->
             </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /section -->
-
-
-{% endblock %}
+            <!-- /container -->
+          </div>
+          <!-- /section --> 
+          {% endblock %}

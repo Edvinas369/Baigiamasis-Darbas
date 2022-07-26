@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.utils.translation import gettext as _
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from . forms import UserUpdateForm, ProfileUpdateForm
@@ -22,20 +21,20 @@ def register(request):
         password2 = request.POST['password2']
         error = False
         if not password or password != password2:
-            messages.error(request, _('The password is invalid or not entered'))
+            messages.error(request, 'The password is invalid or not entered')
             error = True
         if not username or User.objects.filter(username=username).exists():
-            messages.error(request, _('A client with this login name {} already exists').format(username))
+            messages.error(request, 'A client with this login name {} already exists'.format(username))
             error = True
         if not email or User.objects.filter(email=email).exists():
-            messages.error(request, _('A customer with this email {} already exists').format(email))
+            messages.error(request, 'A customer with this email {} already exists'.format(email))
             error = True
         if error:
             return redirect('register')
         else:
             User.objects.create_user(
                 username=username, email=email, password=password)
-            messages.success(request, _('Customer {} was successfully registered').format(email))
+            messages.success(request, 'Customer {} was successfully registered'.format(email))
             return redirect('register')
     return render(request, 'register.html')
 
@@ -49,7 +48,7 @@ def update_profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, _('user profile was updated successfully'))
+            messages.success(request, 'user profile was updated successfully')
             return redirect(reverse_lazy('profile'))
     else:
         u_form = UserUpdateForm(instance=request.user)
