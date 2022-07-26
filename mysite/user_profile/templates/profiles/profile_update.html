@@ -4,7 +4,7 @@
 {% include 'sidebar.html' %} 
 
 <div class="container">
-    <h1>Updating Profile of{{ user }}</h1>
+    <h1>Updating Profile of {{ user }}</h1>
     <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %} {{ u_form|crispy }}
       {{ p_form|crispy }}
       <div class="form-group">

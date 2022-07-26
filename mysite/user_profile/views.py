@@ -35,7 +35,7 @@ def register(request):
             User.objects.create_user(
                 username=username, email=email, password=password)
             messages.success(request, 'Customer {} was successfully registered'.format(email))
-            return redirect('register')
+            return redirect('/')
     return render(request, 'register.html')
 
 
