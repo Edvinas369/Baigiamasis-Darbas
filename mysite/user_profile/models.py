@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from PIL import Image
 
@@ -7,18 +6,17 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(
         get_user_model(),
-        verbose_name=_("user"),
+        verbose_name=("user"),
         on_delete=models.CASCADE,
         related_name="profile",
     )
-    picture = models.ImageField(
-        _("picture"),
+    picture = models.ImageField(("picture"),
         upload_to='user_profile/img/',
         default='user_profile/img/default.jpg'
     )
 
     def __str__(self):
-        return f'{str(self.user)} {_("profile")}'
+        return f'{str(self.user)} ("profile")'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -29,5 +27,5 @@ class Profile(models.Model):
             picture.save(self.picture.path)
 
     class Meta:
-        verbose_name = _("user profile")
-        verbose_name_plural = _("user profiles")
+        verbose_name = "user profile"
+        verbose_name_plural = "user profiles"

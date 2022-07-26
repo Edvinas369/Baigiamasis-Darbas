@@ -67,7 +67,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #30323A;
+  color: #f8694a;
   margin: 0 0 10px;
   font-weight: 700;
 }
@@ -346,7 +346,7 @@ textarea.input {
 
 .header-logo .logo>img {
   width: 100%;
-  max-height: 70px;
+  max-height: 170px;
 }
 
 /*----------------------------*\
@@ -1612,7 +1612,7 @@ textarea.input {
 
 .footer-logo .logo>img {
   width: 100%;
-  max-height: 70px;
+  max-height: 120px;
 }
 
 .footer-social>li {

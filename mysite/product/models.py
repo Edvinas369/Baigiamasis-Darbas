@@ -5,25 +5,24 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 
-# Create your models here.
-
 class Category (MPTTModel):
     STATUS = (
         ('True', 'True'),
         ('False', 'False'),
     )
-    parent = TreeForeignKey('self',blank=True, null=True ,related_name='children', on_delete=models.CASCADE)
+    parent = TreeForeignKey('self', blank=True, null=True,
+                            related_name='children', on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     keywords = models.CharField(max_length=255)
     description = models.TextField(max_length=255)
-    image=models.ImageField(blank=True,upload_to='image/')
-    status=models.CharField(max_length=10, choices=STATUS)
+    image = models.ImageField(blank=True, upload_to='image/')
+    status = models.CharField(max_length=10, choices=STATUS)
     slug = models.SlugField(null=False, unique=True)
-    create_at=models.DateTimeField(auto_now_add=True)
-    update_at=models.DateTimeField(auto_now=True)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.title 
 
     class MPTTMeta:
         order_insertion_by = ['title']
@@ -32,8 +31,8 @@ class Category (MPTTModel):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
-# separating category with subcategory in category selection
-    def __str__(self):                    
+
+    def __str__(self):
         full_path = [self.title]
         k = self.parent
         while k is not None:
@@ -42,40 +41,43 @@ class Category (MPTTModel):
         return ' / '.join(full_path[::-1])
 
 
-
 class Product(models.Model):
     STATUS = (
         ('True', 'True'),
         ('False', 'False'),
     )
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE) #many to one relation with Category
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    image=models.ImageField(blank=True,upload_to='image/')
+    image = models.ImageField(blank=True, upload_to='image/')
     price = models.FloatField()
-    amount=models.IntegerField()
-    minamount=models.IntegerField()
-    detail=RichTextUploadingField()
+    amount = models.IntegerField()
+    minamount = models.IntegerField()
+    detail = RichTextUploadingField()
     slug = models.SlugField(null=False, unique=True)
-    status=models.CharField(max_length=10,choices=STATUS)
-    create_at=models.DateTimeField(auto_now_add=True)
-    update_at=models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=10, choices=STATUS)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
 
-     ## read only tag
     def image_tag(self):
         if self.image.url is not None:
             return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
         else:
             return ""
 
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
+
+
 class Images(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.CASCADE)
-    title = models.CharField(max_length=50,blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50, blank=True)
     image = models.ImageField(blank=True, upload_to='image/')
 
     def __str__(self):

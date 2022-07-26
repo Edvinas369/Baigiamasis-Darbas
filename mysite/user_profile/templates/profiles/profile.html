@@ -1,20 +1,14 @@
 {% extends 'homebase.html' %}
-{% load static i18n %}
 {% block body %}
 {% include 'sidebar.html' %} 
 
 
 <div class="container">
-    <img class="rounded-circle account-img img-fluid" src="{{ user.profile.picture.url }}">
-    <div>
-        <h2 class="account-heading">{{ user.username }}</h2>
-        {% if user.first_name or user.last_name %}
-            <h3>{{ user.first_name }} {{ user.last_name }}</h3>
-        {% endif %}
-        {% if user.is_authenticated %}
-            <p class="text-secondary">{{ user.email }}</p>
-            <p class="text-secondary"><a href="{% url 'profile-update' %}">{% trans "update Profile"|capfirst %}</a></p>
-        {% endif %}
-    </div>
-</div>
-{% endblock %}
+  <img class="rounded-circle account-img img-fluid" src="{{ user.profile.picture.url }}">
+  <div>
+    <h2 class="account-heading">{{ user.username }}</h2> {% if user.first_name or user.last_name %} <h3>{{ user.first_name }} {{ user.last_name }}</h3> {% endif %} {% if user.is_authenticated %} <p class="text-secondary">{{ user.email }}</p>
+    <div class="pull-left">
+      <a href="{% url 'profile-update' %}" class="primary-btn">Update Profile</a>
+    </div> {% endif %}
+  </div>
+</div> {% endblock %}
